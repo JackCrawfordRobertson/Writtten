@@ -1,38 +1,40 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  margin: 2em;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 4em); /* Adjusted for margin */
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  /* No changes needed here, it will take up the space required by its content */
 }
 
-.App-link {
-  color: #61dafb;
+.App-content {
+  flex: 1; /* This will take up all available space */
+  display: flex; /* Enable flex layout */
+  min-height: 0; /* This prevents flex items from collapsing in some browsers */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* Ensure the TreeMap component fills its container */
+.TreeMapContainer {
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  min-height: 0; /* This ensures that the container doesn't collapse */
+}
+
+/* Default style for desktop */
+.paragraph-text {
+  text-align: left;
+  width: 50em; /* This will be overridden on mobile screens */
+  max-width: 100%; /* This ensures it doesn't overflow on small desktop screens */
+  margin: 0px; /* Center the text container */
+  padding: 0px !important; /* Optional: Add some padding on the sides */
+}
+
+/* Mobile style */
+@media (max-width: 768px) {
+  .paragraph-text {
+    width: auto; /* This makes it fill the container */
+    padding: 0 10px; /* Optional: Add some padding on the sides */
   }
 }

@@ -1,25 +1,76 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import {TreeMap, TreeMapSeries, TreeMapRect} from "reaviz";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
+import Button from "@material-ui/core/Button";
+import "./App.css";
+import data from "./Data.json"; // Import the JSON data
+import Logo from "./logo.svg"; // Make sure the path is correct
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [ open, setOpen ] = useState(false);
+    const [ selectedNode, setSelectedNode ] = useState(null);
+
+    const handleClick = (event, data) => {
+        setSelectedNode(data);
+        setOpen(true);
+    };
+
+    return (
+        <div className="App">
+            <div className="App-header">
+                <h1 style={{marginBottom: "0.2em", textAlign: "left", display: "flex", alignItems: "center"}}>
+                    Written Work
+                    <img src={Logo} alt="Logo" style={{width: "1em", marginLeft: "8px"}} />
+                </h1>
+                <p className="paragraph-text">
+                    In this online archive, I'll visually estimate carbon emissions linked to stories, companies,
+                    themes, or individuals using rectangles. The goal is to provide a clear understanding of
+                    environmental impacts. Accuracy, reliable data, and transparent explanations are essential for
+                    credibility and effectiveness.
+                </p>
+            </div>
+            <div className="App-content">
+                <TreeMap
+                    data={data} // Use the imported JSON data
+                    width={"100%"}
+                    height={"100%"}
+                    series={<TreeMapSeries rect={<TreeMapRect onClick={handleClick} />} />}
+                />
+                <Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth="md">
+                    <DialogTitle>Details</DialogTitle>
+                    <DialogContent style={{minWidth: "40vw", minHeight: "30vh"}}>
+                        {selectedNode && (
+                            <>
+                                <h3
+                                    style={{
+                                        marginTop: "10px",
+                                        marginBottom: "10px",
+                                        fontWeight: "bold",
+                                    }}
+                                >
+                                    {selectedNode.data.key}
+                                </h3>
+                                <p
+                                    dangerouslySetInnerHTML={{
+                                        __html: selectedNode.data.description.replace(/\n/g, "<br>"),
+                                    }}
+                                    style={{marginBottom: "16px"}}
+                                />
+                            </>
+                        )}
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => setOpen(false)} color="primary">
+                            Close
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </div>
+        </div>
+    );
+};
 
 export default App;
