@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Written Work",
+  "name": "In this online archive, I'll visually estimate carbon emissions linked to stories, companies, themes, or individuals using rectangles. The goal is to provide a clear understanding of environmental impacts. Accuracy, reliable data, and transparent explanations are essential for credibility and effectiveness.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#3496d3",
   "background_color": "#ffffff"
 }
