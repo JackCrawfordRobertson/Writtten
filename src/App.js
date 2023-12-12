@@ -40,19 +40,27 @@ const App = () => {
                     series={<TreeMapSeries rect={<TreeMapRect onClick={handleClick} />} />}
                 />
                 <Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth="md">
-                    <DialogTitle>Details</DialogTitle>
-                    <DialogContent style={{minWidth: "40vw", minHeight: "30vh"}}>
+                    <DialogTitle style={{paddingBottom: "1em"}}>
+                        {selectedNode ? selectedNode.data.key : "Loading..."}
+                    </DialogTitle>
+                    <DialogContent style={{minWidth: "40vw", minHeight: "30vh", paddingTop: "0"}}>
                         {selectedNode && (
                             <>
-                                <h3
-                                    style={{
-                                        marginTop: "10px",
-                                        marginBottom: "10px",
-                                        fontWeight: "bold",
-                                    }}
-                                >
-                                    {selectedNode.data.key}
-                                </h3>
+                                <div className="image-grid">
+                                    {selectedNode.data.imageUrl
+                                    .split(",")
+                                    .map(
+                                        (url, index) =>
+                                            url.trim() && (
+                                                <img
+                                                    key={index}
+                                                    src={url.trim()}
+                                                    alt={`Image ${index}`}
+                                                    className={`grid-item grid-item-${index}`}
+                                                />
+                                            )
+                                    )}
+                                </div>
                                 <p
                                     dangerouslySetInnerHTML={{
                                         __html: selectedNode.data.description.replace(/\n/g, "<br>"),

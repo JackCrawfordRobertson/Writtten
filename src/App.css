@@ -1,40 +1,67 @@
 .App {
-  margin: 2em;
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 4em); /* Adjusted for margin */
+    margin: 2em;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 4em); /* Adjusted for margin */
 }
 
 .App-header {
-  /* No changes needed here, it will take up the space required by its content */
+    /* No changes needed here, it will take up the space required by its content */
 }
 
 .App-content {
-  flex: 1; /* This will take up all available space */
-  display: flex; /* Enable flex layout */
-  min-height: 0; /* This prevents flex items from collapsing in some browsers */
+    flex: 1; /* This will take up all available space */
+    display: flex; /* Enable flex layout */
+    min-height: 0; /* This prevents flex items from collapsing in some browsers */
 }
 
 /* Ensure the TreeMap component fills its container */
 .TreeMapContainer {
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  min-height: 0; /* This ensures that the container doesn't collapse */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    min-height: 0; /* This ensures that the container doesn't collapse */
 }
 
 /* Default style for desktop */
 .paragraph-text {
-  text-align: left;
-  width: 50em; /* This will be overridden on mobile screens */
-  max-width: 100%; /* This ensures it doesn't overflow on small desktop screens */
-  margin: 0px; /* Center the text container */
-  padding: 0px !important; /* Optional: Add some padding on the sides */
+    text-align: left;
+    width: 50em; /* This will be overridden on mobile screens */
+    max-width: 100%; /* This ensures it doesn't overflow on small desktop screens */
+    margin: 0px; /* Center the text container */
+    padding: 0px !important; /* Optional: Add some padding on the sides */
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns of equal size */
+    grid-template-rows: calc((20em - 1em) / 2) calc((20em - 1em) / 2); /* Two rows, adjusted for gap */
+    grid-gap: 1em;
+    margin-top: 0px;
+    height: 20em; /* Fixed height for the grid */
+    overflow: hidden; /* Hide the overflow to crop images */
+    margin-bottom: 1em;
+}
+
+.grid-item {
+    width: 100%;
+    height: 100%; /* Fit to grid cell */
+    object-fit: cover; /* Cover the cell, may crop the image */
+}
+
+.grid-item-0,
+.grid-item-1 {
+    grid-column: 1; /* First column */
+}
+
+.grid-item-2 {
+    grid-column: 2; /* Second column */
+    grid-row: 1 / span 2; /* Span across both rows */
 }
 
 /* Mobile style */
 @media (max-width: 768px) {
-  .paragraph-text {
-    width: auto; /* This makes it fill the container */
-    padding: 0 10px; /* Optional: Add some padding on the sides */
-  }
+    .paragraph-text {
+        width: auto; /* This makes it fill the container */
+        padding: 0 10px; /* Optional: Add some padding on the sides */
+    }
 }
