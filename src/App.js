@@ -55,7 +55,7 @@ const App = () => {
                                                 <img
                                                     key={index}
                                                     src={url.trim()}
-                                                    alt={`Image ${index}`}
+                                                    alt={`${index}`}
                                                     className={`grid-item grid-item-${index}`}
                                                 />
                                             )
