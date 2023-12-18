@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {TreeMap, TreeMapSeries, TreeMapRect} from "reaviz";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -11,7 +11,16 @@ import Logo from "./logo.svg"; // Make sure the path is correct
 
 const App = () => {
     const [ open, setOpen ] = useState(false);
-    const [ selectedNode, setSelectedNode ] = useState(null);
+    const [selectedNode, setSelectedNode] = useState(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+
+    useEffect(() => {
+        const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+        const mobile = Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i));
+        setIsMobile(mobile);
+    }, []);
+
 
     const handleClick = (event, data) => {
         setSelectedNode(data);
