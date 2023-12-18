@@ -12,7 +12,7 @@ import Logo from "./logo.svg"; // Make sure the path is correct
 const App = () => {
     const [ open, setOpen ] = useState(false);
     const [selectedNode, setSelectedNode] = useState(null);
-    const [isMobile, setIsMobile] = useState(false);
+    const [ setIsMobile] = useState(false);
 
 
     useEffect(() => {
