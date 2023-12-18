@@ -12,21 +12,18 @@ import Logo from "./logo.svg"; // Make sure the path is correct
 const App = () => {
     const [open, setOpen] = useState(false);
     const [selectedNode, setSelectedNode] = useState(null);
-    
-    const [ setIsMobile] = useState(false);
 
     useEffect(() => {
         const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+        // eslint-disable-next-line
         const mobile = Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i));
-        setIsMobile(mobile);
-    }, [setIsMobile]); // Empty dependency array, no need to include setIsMobile
+        // setIsMobile(mobile); // Removed unused state variable
+    }, []); // Empty dependency array, no need to include setIsMobile
 
-    // eslint-disable-next-line
     const handleClick = (event, data) => {
         setSelectedNode(data);
         setOpen(true);
     };
-
 
     return (
         <div className="App">
