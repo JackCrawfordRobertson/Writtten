@@ -13,13 +13,13 @@ const App = () => {
     const [open, setOpen] = useState(false);
     const [selectedNode, setSelectedNode] = useState(null);
     
-    const [isMobile, setIsMobile] = useState(false);
+    const [ setIsMobile] = useState(false);
 
     useEffect(() => {
         const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;
         const mobile = Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i));
         setIsMobile(mobile);
-    }, []); // Empty dependency array, no need to include setIsMobile
+    }, [setIsMobile]); // Empty dependency array, no need to include setIsMobile
 
     // eslint-disable-next-line
     const handleClick = (event, data) => {
