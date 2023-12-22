@@ -24,11 +24,24 @@
 
 /* Default style for desktop */
 .paragraph-text {
+    position: relative; /* Added to position the gradient overlay */
+    overflow-y: auto; /* Enable vertical scrolling */
     text-align: left;
     width: 50em; /* This will be overridden on mobile screens */
     max-width: 100%; /* This ensures it doesn't overflow on small desktop screens */
     margin: 0px; /* Center the text container */
     padding: 0px !important; /* Optional: Add some padding on the sides */
+    max-height: 150px; /* Adjust the maximum height as needed */
+}
+
+.paragraph-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px; /* Height of the fading effect */
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)); /* Adjust the color to match your background */
 }
 
 .image-grid {
