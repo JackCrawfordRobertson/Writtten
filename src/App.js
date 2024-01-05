@@ -6,7 +6,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import "./App.css";
-import data from "./Data.js"; // Import the JSON data
+import data from "./Data.json"; // Import the JSON data
 import Logo from "./logo.svg"; // Make sure the path is correct
 
 const App = () => {
