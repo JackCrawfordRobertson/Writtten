@@ -34,15 +34,7 @@
     max-height: 150px; /* Adjust the maximum height as needed */
 }
 
-.paragraph-text::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 20px; /* Height of the fading effect */
-    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)); /* Adjust the color to match your background */
-}
+
 
 .image-grid {
     display: grid;
