@@ -15,7 +15,6 @@ const App = () => {
 
     useEffect(() => {
         const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;
-        // eslint-disable-next-line
         const mobile = Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i));
         // setIsMobile(mobile); // Removed unused state variable
     }, []); // Empty dependency array, no need to include setIsMobile
@@ -33,10 +32,7 @@ const App = () => {
                     <img src={Logo} alt="Logo" style={{ width: "1em", marginLeft: "8px" }} />
                 </h1>
                 <p className="paragraph-text">
-                    In this online archive, I'll visually estimate carbon emissions linked to stories, companies,
-                    themes, or individuals using rectangles. The goal is to provide a clear understanding of
-                    environmental impacts. Accuracy, reliable data, and transparent explanations are essential for
-                    credibility and effectiveness.
+                    In this online archive, I've authored a series of stories, each represented by a rectangle. These rectangles visually estimate the carbon emissions associated with various topics, including companies, themes, and individuals. My goal is to provide a clear understanding of environmental impacts. I prioritize accuracy, use reliable data, and offer transparent explanations to ensure credibility and effectiveness.
                 </p>
             </div>
             <div className="App-content">
