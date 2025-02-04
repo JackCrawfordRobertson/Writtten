@@ -6,8 +6,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import "./App.css";
-import data from "./Data.json"; // Import the JSON data
-import Logo from "./logo.svg"; // Make sure the path is correct
+import data from "./Data.json";
+import Logo from "./logo.svg";
 
 const App = () => {
     const [open, setOpen] = useState(false);
@@ -16,8 +16,7 @@ const App = () => {
     useEffect(() => {
         const userAgent = typeof window.navigator === "undefined" ? "" : navigator.userAgent;
         const mobile = Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i));
-        // setIsMobile(mobile); // Removed unused state variable
-    }, []); // Empty dependency array, no need to include setIsMobile
+    }, []);
 
     const handleClick = (event, data) => {
         setSelectedNode(data);
@@ -27,9 +26,9 @@ const App = () => {
     return (
         <div className="App">
             <div className="App-header">
-                <h1 style={{ marginBottom: "0.2em", textAlign: "left", display: "flex", alignItems: "center" }}>
+                <h1 className="title-with-logo">
                     Written Work
-                    <img src={Logo} alt="Logo" style={{ width: "1em", marginLeft: "8px" }} />
+                    <img src={Logo} alt="Logo" className="logo" />
                 </h1>
                 <p className="paragraph-text">
                     In this online archive, I've authored a series of stories, each represented by a rectangle. These rectangles visually estimate the carbon emissions associated with various topics, including companies, themes, and individuals. My goal is to provide a clear understanding of environmental impacts. I prioritize accuracy, use reliable data, and offer transparent explanations to ensure credibility and effectiveness.
@@ -37,16 +36,16 @@ const App = () => {
             </div>
             <div className="App-content">
                 <TreeMap
-                    data={data} // Use the imported JSON data
+                    data={data}
                     width={"100%"}
                     height={"100%"}
                     series={<TreeMapSeries rect={<TreeMapRect onClick={handleClick} />} />}
                 />
                 <Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth="md">
-                    <DialogTitle style={{ paddingBottom: "1em" }}>
+                    <DialogTitle className="dialog-title">
                         {selectedNode ? selectedNode.data.key : "Loading..."}
                     </DialogTitle>
-                    <DialogContent style={{ minWidth: "40vw", minHeight: "30vh", paddingTop: "0" }}>
+                    <DialogContent className="dialog-content">
                         {selectedNode && (
                             <>
                                 <div className="image-grid">
@@ -68,7 +67,7 @@ const App = () => {
                                     dangerouslySetInnerHTML={{
                                         __html: selectedNode.data.description.replace(/\n/g, "<br>"),
                                     }}
-                                    style={{ marginBottom: "16px" }}
+                                    className="dialog-description"
                                 />
                             </>
                         )}

@@ -5,10 +5,6 @@
     height: calc(100vh - 4em); /* Adjusted for margin */
 }
 
-.App-header {
-    /* No changes needed here, it will take up the space required by its content */
-}
-
 .App-content {
     flex: 1; /* This will take up all available space */
     display: flex; /* Enable flex layout */
@@ -20,6 +16,51 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     min-height: 0; /* This ensures that the container doesn't collapse */
+}
+
+/* Dialog Title */
+.dialog-title {
+    background-color: #0044cc; /* Dark blue background */
+    color: white;              /* White text for reversed-out effect */
+    font-weight: bold;         /* Bold text */
+    padding: 16px;             /* Padding for better spacing */
+}
+
+/* Dialog Content */
+.dialog-content {
+    background-color: #0044cc; /* Dark blue to match the title */
+    color: white;              /* White text */
+    font-weight: bold;         /* Bold description text */
+    padding: 16px;
+}
+
+/* Dialog Description Styling */
+.dialog-description {
+    color: white;              /* White text for readability on dark blue */
+    font-weight: bold;
+    line-height: 1.5;          /* Improve readability */
+}
+
+/* Title with Logo */
+.title-with-logo {
+    margin-bottom: 0.2em;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 1em;
+    margin-left: 8px;
+}
+
+/* Optional Tooltip Styling */
+.treemap-tooltip {
+    background-color: #0044cc;
+    color: white;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 4px;
 }
 
 /* Default style for desktop */
